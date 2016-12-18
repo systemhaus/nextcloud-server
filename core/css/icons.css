@@ -426,3 +426,7 @@ img.icon-loading-small-dark, object.icon-loading-small-dark, video.icon-loading-
 .icon-picture {
 	background-image: url('../img/places/picture.svg?v=1');
 }
+
+.icon-apps {
+	background-image: url('../img/places/apps.svg?v=1');
+}
