@@ -50,7 +50,7 @@ interface MoveableMount {
 	 *
 	 * @return bool true if allowed, false otherwise
 	 *
-	 * @since 9.2
+	 * @since 11.0
 	 */
 	public function isTargetAllowed($target);
 }
