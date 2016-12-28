@@ -327,6 +327,8 @@ OC.L10N.register(
     "Enhanced security has been enabled for your account. Please authenticate using a second factor." : "Enhanced security has been enabled for your account. Please authenticate using a second factor.",
     "Cancel login" : "Cancel login",
     "Please authenticate using the selected factor." : "Please authenticate using the selected factor.",
-    "An error occured while verifying the token" : "An error occured while verifying the token"
+    "An error occured while verifying the token" : "An error occured while verifying the token",
+    "Set the label shown to the recipient" : "Set the label shown to the recipient",
+	"Custom Label for share" : "Custom Label for share"
 },
 "nplurals=2; plural=(n != 1);");

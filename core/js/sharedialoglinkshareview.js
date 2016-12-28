@@ -365,3 +365,121 @@
 	OC.Share.ShareDialogLinkShareView = ShareDialogLinkShareView;
 
 })();
+
+
+
+
+
+
+
+
+
+/*
+ * Copyright (c) 2016
+ *
+ * This file is licensed under the Affero General Public License version 3
+ * or later.
+ *
+ * See the COPYING-README file.
+ *
+ */
+
+/* globals Handlebars */
+
+(function() {
+	if (!OC.Share) {
+		OC.Share = {};
+	}
+
+	var TEMPLATE =
+			'<span class="icon-loading-small hidden"></span>' +
+			'<input type="checkbox" name="labelCheckbox" id="labelCheckbox-{{cid}}" class="checkbox labelCheckbox" value="1" />' +
+			'<label for="labelCheckbox-{{cid}}">{{sharedLabelCheckboxText}}</label>' +
+			'<br />' +
+			'<input id="labelTextbox-{{cid}}" class="shareWithField" type="text" placeholder="{{sharedLabelTextboxText}}" />'
+		;
+
+	/**
+	 * @class OCA.Share.ShareDialogView
+	 * @member {OC.Share.ShareItemModel} model
+	 * @member {jQuery} $el
+	 * @memberof OCA.Sharing
+	 * @classdesc
+	 *
+	 * Represents the GUI of the share dialogue
+	 *
+	 */
+	var ShareDialogShareLabelView = OC.Backbone.View.extend({
+		/** @type {string} **/
+		id: 'ShareDialogShareLabelView',
+
+		/** @type {string} **/
+		tagName: 'div',
+
+		/** @type {string} **/
+		className: 'reshare',
+
+		/** @type {OC.Share.ShareConfigModel} **/
+		configModel: undefined,
+
+		/** @type {Function} **/
+		_template: undefined,
+
+		initialize: function(options) {
+			var view = this;
+
+			this.model.on('change:reshare', function() {
+				view.render();
+			});
+
+			if(!_.isUndefined(options.configModel)) {
+				this.configModel = options.configModel;
+			} else {
+				throw 'missing OC.Share.ShareConfigModel';
+			}
+		},
+
+		render: function() {
+			if (!this.model.hasReshare()
+				|| this.model.getReshareOwner() === OC.currentUser)
+			{
+				this.$el.empty();
+				return this;
+			}
+
+			var reshareTemplate = this.template();
+			var ownerDisplayName = this.model.getReshareOwnerDisplayname();
+
+			this.$el.html(reshareTemplate({
+				avatarEnabled: this.configModel.areAvatarsEnabled(),
+				reshareOwner: this.model.getReshareOwner(),
+				sharedLabelCheckboxText: t('core', 'Custom L'),
+				sharedLabelTextboxText: t('core', 'Set the label shown to the recipient')
+			}));
+
+			if(this.configModel.areAvatarsEnabled()) {
+				this.$el.find('.avatar').each(function() {
+					var $this = $(this);
+					$this.avatar($this.data('username'), 32);
+				});
+			}
+
+			return this;
+		},
+
+		/**
+		 * @returns {Function} from Handlebars
+		 * @private
+		 */
+		template: function () {
+			if (!this._template) {
+				this._template = Handlebars.compile(TEMPLATE);
+			}
+			return this._template;
+		}
+
+	});
+
+	OC.Share.ShareDialogShareLabelView = ShareDialogShareLabelView;
+
+})();

@@ -26,6 +26,7 @@
 		<?php foreach ($_['jsfiles'] as $jsfile): ?>
 			<script nonce="<?php p(\OC::$server->getContentSecurityPolicyNonceManager()->getNonce()) ?>" src="<?php print_unescaped($jsfile); ?>"></script>
 		<?php endforeach; ?>
+		<?php echo var_dump($_['jsfiles']); ?>
 		<?php print_unescaped($_['headers']); ?>
 	</head>
 	<body id="body-public">

@@ -365,6 +365,8 @@ OC.L10N.register(
     "Enhanced security has been enabled for your account. Please authenticate using a second factor." : "Die erweiterte Sicherheit wurde für dein Konto aktiviert. Bitte authentifiziere dich mit der zweiten Stufe.",
     "Cancel login" : "Anmelden abbrechen",
     "Please authenticate using the selected factor." : "Bitte authentifiziere dich mit dem ausgewählten zweiten Faktor. ",
-    "An error occured while verifying the token" : "Es ist ein Fehler bei der Verifizierung des Tokens aufgetreten"
+    "An error occured while verifying the token" : "Es ist ein Fehler bei der Verifizierung des Tokens aufgetreten",
+    "Set the label shown to the recipient" : "Setze die Bezeichnung, die dem Empfänger angezeigt wird",
+    "Custom Label for share" : "Benutzerdefinierte Bezeichnung"
 },
 "nplurals=2; plural=(n != 1);");
